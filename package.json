@@ -1,0 +1,9 @@
+{
+  "name": "millennial-website",
+  "private": true,
+  "scripts": {
+    "build": "node build.js",
+    "check": "node build.js --check",
+    "clean": "node build.js --clean"
+  }
+}
