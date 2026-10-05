@@ -1,0 +1,1684 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Millennial Clothing — Header</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@600;700;800;900&family=Inter:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&display=block" rel="stylesheet">
+<style>
+  :root{
+    /* ===== GLOBAL THEME: Light Ash + Dark Black (gradient), shared across every page/CTA ===== */
+    --ink:#131316;
+    --canvas:#ECECEE;
+    --canvas-2:#DEDEE3;
+    --dark-1:#3A3A42;
+    --dark-2:#000000;
+    --amber:#3A3A42;
+    --amber-dark:#1B1B1F;
+    --thread:#000000;
+    --steel:#6C6C74;
+    --line:#D2D2D7;
+    --white:#FFFFFF;
+    --font-body:'Inter', 'Helvetica Neue', Arial, sans-serif;
+    --font-display:'Big Shoulders Display', 'Arial Narrow', sans-serif;
+    --font-mono:'IBM Plex Mono', 'Courier New', monospace;
+    --grad-dark:linear-gradient(135deg, var(--dark-1), var(--dark-2));
+  }
+  *{box-sizing:border-box; margin:0; padding:0; font-family:inherit;}
+  html{-webkit-text-size-adjust:100%; text-size-adjust:100%; overflow-x:hidden; width:100%;}
+  body{
+    background:var(--canvas);
+    color:var(--ink);
+    font-family:var(--font-body);
+    -webkit-font-smoothing:antialiased;
+    min-height:100vh;
+    overflow-x:hidden;
+    width:100%;
+    position:relative;
+  }
+  a{color:inherit; text-decoration:none;}
+  img{max-width:100%; display:block;}
+
+  header{ position:sticky; top:0; z-index:50; background:rgba(236,236,238,0.92); backdrop-filter:blur(10px); -webkit-backdrop-filter:blur(10px); border-bottom:1px solid var(--line); }
+  .header-inner{ max-width:1180px; margin:0 auto; display:flex; align-items:center; justify-content:space-between; padding:10px 20px; gap:12px; }
+  .logo{ display:flex; align-items:center; gap:14px; min-width:0; }
+  .logo-link{ display:block; flex-shrink:0; perspective:600px; }
+  .logo-link:focus-visible{ outline:2px solid var(--dark-2); outline-offset:3px; border-radius:14px; }
+
+  /* Logo glass card — 20% smaller than original (52px → 42px) */
+  .logo-badge-3d{
+    position:relative;
+    display:flex; align-items:center; justify-content:center;
+    width:42px; height:42px; flex-shrink:0;
+    border-radius:13px;
+    background:linear-gradient(155deg, rgba(10,10,10,0.92), rgba(30,30,30,0.82) 45%, rgba(20,20,20,0.88) 100%);
+    -webkit-backdrop-filter:blur(6px);
+    backdrop-filter:blur(6px);
+    border:1px solid rgba(80,80,80,0.4);
+    box-shadow:
+      0 1px 0 rgba(80,80,80,0.25) inset,
+      0 -5px 8px rgba(0,0,0,0.30) inset,
+      0 8px 14px rgba(0,0,0,0.40),
+      0 2px 4px rgba(0,0,0,0.30);
+    transform-style:preserve-3d;
+    transform:rotateX(8deg) rotateY(-8deg);
+  }
+  .logo-badge-3d::before{
+    content:'';
+    position:absolute; inset:0; border-radius:13px;
+    background:linear-gradient(120deg, rgba(255,255,255,0.08) 0%, transparent 30%, transparent 70%, rgba(255,255,255,0.04) 100%);
+    pointer-events:none;
+  }
+  .logo-badge-3d::after{
+    content:'';
+    position:absolute; inset:0; border-radius:13px;
+    box-shadow:0 0 0 1px rgba(80,80,80,0.20) inset;
+    pointer-events:none;
+  }
+  .logo-mark{
+    height:27px; width:auto; display:block;
+    transform:translateZ(11px);
+    filter:drop-shadow(0 1px 1px rgba(0,0,0,0.4)) brightness(0) invert(1);
+  }
+
+  /* Icon glass cards — same glass treatment as the logo card, at 80% of its size */
+  .header-icons{ display:flex; align-items:center; gap:8px; flex-shrink:0; }
+  .icon-btn{
+    display:flex; align-items:center; justify-content:center;
+    width:25px; height:25px; flex-shrink:0;
+    border-radius:8px;
+    background:linear-gradient(155deg, rgba(255,255,255,0.75), rgba(255,255,255,0.18) 45%, rgba(255,255,255,0.35) 100%);
+    -webkit-backdrop-filter:blur(6px);
+    backdrop-filter:blur(6px);
+    border:1px solid rgba(255,255,255,0.6);
+    box-shadow:
+      0 1px 0 rgba(255,255,255,0.8) inset,
+      0 -3px 5px rgba(19,19,22,0.10) inset,
+      0 5px 9px rgba(19,19,22,0.18),
+      0 1px 2px rgba(19,19,22,0.14);
+    color:var(--ink); cursor:pointer;
+    transition:transform 0.15s ease, box-shadow 0.15s ease;
+    position:relative;
+  }
+  .icon-btn svg{ width:11px; height:11px; }
+  .icon-btn:hover{ transform:translateY(-1px); box-shadow:
+      0 1px 0 rgba(255,255,255,0.9) inset,
+      0 -3px 5px rgba(19,19,22,0.10) inset,
+      0 7px 12px rgba(19,19,22,0.24),
+      0 2px 3px rgba(19,19,22,0.18); }
+  .icon-btn:focus-visible{ outline:2px solid var(--dark-2); outline-offset:2px; }
+  /* Plain dot indicator only — used on Notification & Cart, no counts */
+  .icon-dot{
+    position:absolute; top:-2px; right:-2px;
+    width:9px; height:9px;
+    background:var(--grad-dark);
+    border:1.5px solid var(--canvas);
+    border-radius:50%;
+  }
+
+  /* ===== Profile icon + logged-in dropdown ===== */
+  .profile-wrap{ position:relative; flex-shrink:0; }
+  .profile-btn{ border:none; }
+  .profile-btn[aria-expanded="true"]{
+    box-shadow:
+      0 1px 0 rgba(255,255,255,0.9) inset,
+      0 -3px 5px rgba(19,19,22,0.10) inset,
+      0 0 0 2px rgba(19,19,22,0.55);
+  }
+
+  .profile-dropdown{
+    position:absolute; top:calc(100% + 10px); right:0;
+    min-width:198px;
+    background:rgba(255,255,255,0.98);
+    border:1px solid var(--line);
+    border-radius:14px;
+    box-shadow:0 14px 32px rgba(19,19,22,0.16), 0 2px 6px rgba(19,19,22,0.08);
+    padding:6px;
+    opacity:0; visibility:hidden; transform:translateY(-6px) scale(0.98);
+    transform-origin:top right;
+    transition:opacity 0.15s ease, transform 0.15s ease, visibility 0.15s;
+    z-index:60;
+  }
+  .profile-dropdown.open{ opacity:1; visibility:visible; transform:translateY(0) scale(1); }
+  .profile-dropdown::before{
+    content:''; position:absolute; top:-5px; right:14px;
+    width:9px; height:9px; background:rgba(255,255,255,0.98);
+    border-left:1px solid var(--line); border-top:1px solid var(--line);
+    transform:rotate(45deg);
+  }
+  .profile-name-row{ padding:9px 11px 8px; }
+  .profile-name{ font-family:var(--font-display); font-weight:800; font-size:13px; text-transform:uppercase; letter-spacing:0.01em; color:var(--ink); }
+  .profile-email{ font-size:11px; color:var(--steel); margin-top:1px; }
+  .profile-divider{ height:1px; background:var(--line); margin:5px 2px; }
+  .profile-item{
+    display:flex; align-items:center; gap:10px;
+    width:100%; padding:9px 10px; border-radius:9px;
+    font-family:var(--font-body); font-size:13px; font-weight:500; color:var(--ink);
+    background:none; border:none; text-align:left; cursor:pointer;
+  }
+  .profile-item svg{ width:16px; height:16px; flex-shrink:0; color:var(--steel); }
+  .profile-item:hover{ background:var(--canvas); }
+  .profile-item:hover svg{ color:var(--ink); }
+  .profile-item-danger{ color:#C4372E; }
+  .profile-item-danger svg{ color:#C4372E; }
+  .profile-item-danger:hover{ background:rgba(196,55,46,0.08); }
+  .profile-item-danger:hover svg{ color:#C4372E; }
+
+  /* ===== Notification bell + hang-tag dropdown ===== */
+  .notif-wrap{ position:relative; flex-shrink:0; }
+  .notif-btn[aria-expanded="true"]{
+    box-shadow:
+      0 1px 0 rgba(255,255,255,0.9) inset,
+      0 -3px 5px rgba(19,19,22,0.10) inset,
+      0 0 0 2px rgba(19,19,22,0.55);
+  }
+  .notif-dropdown{
+    position:absolute; top:calc(100% + 10px); right:0;
+    width:322px; max-width:88vw;
+    background:rgba(255,255,255,0.98);
+    border:1px solid var(--line);
+    border-radius:14px;
+    box-shadow:0 14px 32px rgba(19,19,22,0.16), 0 2px 6px rgba(19,19,22,0.08);
+    opacity:0; visibility:hidden; transform:translateY(-6px) scale(0.98);
+    transform-origin:top right;
+    transition:opacity 0.15s ease, transform 0.15s ease, visibility 0.15s;
+    z-index:60;
+  }
+  .notif-dropdown.open{ opacity:1; visibility:visible; transform:translateY(0) scale(1); }
+  .notif-dropdown::before{
+    content:''; position:absolute; top:-5px; right:14px;
+    width:9px; height:9px; background:rgba(255,255,255,0.98);
+    border-left:1px solid var(--line); border-top:1px solid var(--line);
+    transform:rotate(45deg);
+  }
+  /* On narrow screens the bell sits close to the right edge, so a
+     right-anchored fixed-width panel can run off the LEFT side of the
+     viewport. mobile-fixed (added/positioned by JS on open, based on
+     actual viewport width) pins it with equal side padding instead. */
+  .notif-dropdown.mobile-fixed{
+    position:fixed; top:auto; right:12px; left:12px;
+    width:auto; max-width:none;
+    transform-origin:top center;
+  }
+  .notif-dropdown.mobile-fixed::before{ display:none; }
+  .notif-head{ display:flex; align-items:center; justify-content:space-between; padding:11px 13px 9px; }
+  .notif-head-title{ font-family:var(--font-display); font-weight:800; font-size:13px; text-transform:uppercase; letter-spacing:0.01em; color:var(--ink); }
+  .notif-head-actions{ display:flex; align-items:center; gap:6px; }
+  .notif-head-btn{ border:none; background:none; color:var(--steel); font-family:var(--font-body); font-size:11px; font-weight:700; cursor:pointer; padding:2px; }
+  .notif-head-btn:hover{ color:var(--dark-2); text-decoration:underline; }
+  .notif-head-sep{ color:var(--line); font-size:11px; }
+  .notif-divider{ height:1px; background:var(--line); margin:0 2px; }
+
+  .notif-list{ max-height:392px; overflow-y:auto; padding:4px; }
+  .notif-item{
+    display:flex; align-items:flex-start; gap:8px; padding:9px 8px 9px 9px; border-radius:9px;
+    position:relative; border-left:2px solid transparent; transition:background 0.12s ease;
+  }
+  .notif-item:hover{ background:var(--canvas); }
+  .notif-item.unread{ background:rgba(19,19,22,0.035); border-left-color:var(--ink); }
+  .notif-item.unread:hover{ background:rgba(19,19,22,0.06); }
+  .notif-item-dot{ flex-shrink:0; width:6px; height:6px; border-radius:50%; background:var(--ink); margin-top:5px; visibility:hidden; }
+  .notif-item.unread .notif-item-dot{ visibility:visible; }
+  .notif-item-body{ min-width:0; flex:1; }
+  .notif-item-top{ display:flex; align-items:baseline; justify-content:space-between; gap:8px; }
+  .notif-item-title{ font-size:12px; font-weight:600; color:var(--steel); line-height:1.3; min-width:0; }
+  .notif-item.unread .notif-item-title{ font-weight:800; color:var(--ink); }
+  .notif-item-time{ font-size:10px; color:var(--steel); flex-shrink:0; opacity:0.85; }
+  .notif-item-snippet{
+    font-size:11.5px; color:var(--steel); margin-top:2px; line-height:1.4;
+    white-space:nowrap; overflow:hidden; text-overflow:ellipsis;
+  }
+  .notif-item.unread .notif-item-snippet{ color:var(--ink); opacity:0.75; }
+  .notif-item-actions{ display:flex; align-items:center; gap:10px; margin-top:5px; }
+  .notif-action-link{ font-family:var(--font-body); font-size:10.5px; font-weight:700; background:none; border:none; cursor:pointer; padding:0; color:var(--steel); }
+  .notif-action-link:hover{ text-decoration:underline; color:var(--ink); }
+  .notif-read-link{ color:var(--ink); }
+  .notif-empty{ padding:26px 14px; text-align:center; color:var(--steel); font-size:12.5px; }
+
+  .notif-viewall{
+    display:block; width:100%; text-align:center; padding:9px 8px; margin-top:2px;
+    border:none; border-top:1px solid var(--line); background:none; cursor:pointer;
+    font-family:var(--font-body); font-size:11px; font-weight:700; color:var(--steel);
+  }
+  .notif-viewall:hover{ color:var(--ink); background:var(--canvas); }
+
+  /* Small popup shown on "Read" — full notification description, with banner + CTA */
+  .notif-modal-overlay{
+    position:fixed; inset:0; background:rgba(19,19,22,0.42);
+    display:flex; align-items:center; justify-content:center; padding:20px;
+    z-index:300; opacity:0; visibility:hidden; transition:opacity 0.15s ease, visibility 0.15s;
+  }
+  .notif-modal-overlay.open{ opacity:1; visibility:visible; }
+  .notif-modal{
+    width:100%; max-width:340px; background:var(--white); border-radius:16px; overflow:hidden;
+    box-shadow:0 20px 44px rgba(19,19,22,0.28);
+    transform:translateY(8px) scale(0.97); transition:transform 0.15s ease;
+  }
+  .notif-modal-overlay.open .notif-modal{ transform:translateY(0) scale(1); }
+  .notif-modal-banner{
+    position:relative; height:104px; background:var(--grad-dark);
+    display:flex; align-items:center; justify-content:center;
+  }
+  .notif-modal-banner svg{ width:30px; height:30px; color:rgba(255,255,255,0.85); }
+  .notif-modal-close{
+    position:absolute; top:10px; right:10px; flex-shrink:0; width:26px; height:26px; border-radius:8px;
+    border:none; background:rgba(255,255,255,0.16); backdrop-filter:blur(4px); color:#fff; cursor:pointer;
+    display:flex; align-items:center; justify-content:center;
+  }
+  .notif-modal-close svg{ width:12px; height:12px; color:#fff; }
+  .notif-modal-close:hover{ background:rgba(255,255,255,0.28); }
+  .notif-modal-body{ padding:16px; }
+  .notif-modal-title{ font-size:14px; font-weight:800; color:var(--ink); line-height:1.35; }
+  .notif-modal-time{ font-size:11px; color:var(--steel); margin-top:4px; }
+  .notif-modal-desc{ font-size:13px; color:var(--ink); line-height:1.55; margin-top:10px; }
+  .notif-modal-cta{
+    display:block; width:100%; text-align:center; margin-top:14px; padding:11px 14px;
+    border-radius:24px; border:none; background:var(--ink); color:#fff; cursor:pointer;
+    font-family:var(--font-body); font-size:12.5px; font-weight:700;
+  }
+  .notif-modal-cta:hover{ background:#000; }
+
+  .menu-lines{ display:flex; flex-direction:column; justify-content:center; gap:3px; width:13px; height:13px; }
+  .menu-lines span{
+    display:block; height:2px; width:100%; background:var(--ink); border-radius:2px;
+    transition:transform 0.3s ease, opacity 0.2s ease, width 0.3s ease;
+    transform-origin:center;
+  }
+  .menu-btn[aria-expanded="true"] .menu-lines span:nth-child(1){ transform:translateY(4px) rotate(45deg); }
+  .menu-btn[aria-expanded="true"] .menu-lines span:nth-child(2){ opacity:0; }
+  .menu-btn[aria-expanded="true"] .menu-lines span:nth-child(3){ transform:translateY(-4px) rotate(-45deg); }
+
+  .menu-drawer-overlay{
+    position:fixed; top:var(--header-h, 63px); left:0; right:0; bottom:0; background:rgba(19,19,22,0.38);
+    z-index:200; opacity:0; visibility:hidden;
+    transition:opacity 0.25s ease, visibility 0.25s;
+  }
+  .menu-drawer-overlay.open{ opacity:1; visibility:visible; }
+  .expand-menu{
+    position:fixed; top:var(--header-h, 63px); right:0; bottom:0;
+    width:66.667vw; min-width:240px; max-width:400px;
+    background:var(--canvas); z-index:201;
+    transform:translateX(110%);
+    transition:transform 0.3s cubic-bezier(0.4,0,0.2,1);
+    overflow-y:auto;
+    box-shadow:-8px 0 32px rgba(19,19,22,0.14);
+  }
+  .expand-menu.open{ transform:translateX(0); }
+  .expand-menu-inner{ padding:8px 16px 18px; display:flex; flex-direction:column; gap:2px; }
+  .menu-link{
+    font-family:var(--font-mono); font-size:13px; letter-spacing:0.04em; text-transform:uppercase;
+    color:var(--ink); padding:12px 4px; border-bottom:1px solid var(--line);
+    display:flex; align-items:center; justify-content:space-between;
+  }
+  .menu-link:hover{ color:var(--dark-2); }
+  .expand-menu-inner > .menu-link:last-child{ border-bottom:none; }
+
+  .menu-accordion{ border-bottom:1px solid var(--line); }
+  .menu-accordion-head{
+    width:100%; border:none; background:none; cursor:pointer;
+    font-family:var(--font-mono); font-size:13px; letter-spacing:0.04em; text-transform:uppercase;
+    color:var(--ink); padding:12px 4px;
+    display:flex; align-items:center; justify-content:space-between;
+  }
+  .menu-accordion-head:hover{ color:var(--dark-2); }
+  .acc-chevron{ width:14px; height:14px; flex-shrink:0; transition:transform 0.25s ease; }
+  .menu-accordion-head[aria-expanded="true"] .acc-chevron{ transform:rotate(180deg); }
+  .menu-accordion-body{ max-height:0; overflow:hidden; transition:max-height 0.3s ease; }
+  .menu-accordion-body-inner{ display:flex; flex-direction:column; padding:0 4px 8px 14px; }
+  .menu-accordion-body-inner a{
+    font-family:var(--font-body); font-size:12.5px; letter-spacing:0.01em; text-transform:none;
+    color:var(--steel); padding:9px 4px; border-bottom:1px dashed var(--line);
+  }
+  .menu-accordion-body-inner a:last-child{ border-bottom:none; }
+  .menu-accordion-body-inner a:hover{ color:var(--ink); }
+
+  /* Nested sub-accordion (Categories -> per-category subcategory list) */
+  .menu-accordion-body-inner.nested-list{ padding-left:4px; }
+  .menu-subaccordion{ border-top:1px solid rgba(19,19,22,0.06); }
+  .menu-subaccordion:first-child{ border-top:none; }
+  .menu-subaccordion-head{
+    width:100%; display:flex; align-items:center; justify-content:space-between;
+    background:none; border:none; padding:8px 4px; font-family:var(--font-body);
+    font-size:12.5px; font-weight:600; color:var(--ink); cursor:pointer;
+  }
+  .menu-subaccordion-head[aria-expanded="true"] .acc-chevron{ transform:rotate(180deg); }
+  .menu-subaccordion-body{ max-height:0; overflow:hidden; transition:max-height 0.3s ease; }
+  .menu-subaccordion-body-inner{ display:flex; flex-direction:column; padding:0 4px 8px 14px; }
+  .menu-subaccordion-body-inner a{
+    padding:6px 0; font-size:11.5px; color:var(--steel); border-bottom:1px solid rgba(19,19,22,0.04);
+  }
+  .menu-subaccordion-body-inner a:last-child{ border-bottom:none; }
+  .menu-subaccordion-body-inner a:hover{ color:var(--ink); }
+  .menu-brand-strip{
+    display:flex; align-items:center; justify-content:center; flex-wrap:wrap;
+    gap:8px; padding:12px 4px; border-bottom:1px solid var(--line);
+  }
+  .menu-brand-badge{
+    font-family:var(--font-display); font-weight:700; font-size:11.5px;
+    letter-spacing:0.02em; text-transform:uppercase; color:var(--steel);
+    padding:5px 8px; border-radius:7px; transition:color 0.15s ease, background 0.15s ease;
+  }
+  .menu-brand-badge:hover{ color:var(--ink); background:var(--canvas-2); }
+  .menu-brand-sep{ color:var(--line); font-size:12px; }
+
+  /* ===== Search panel ===== */
+  .search-panel{
+    max-height:0; overflow:hidden;
+    background:rgba(255,255,255,0.98); border-bottom:1px solid transparent;
+    transition:max-height 0.3s ease, border-color 0.2s ease;
+  }
+  .search-panel.open{ max-height:520px; border-bottom-color:var(--line); }
+  .search-panel-inner{ max-width:680px; margin:0 auto; padding:16px 20px 20px; }
+  .search-bar-row{ display:flex; align-items:center; gap:8px; }
+  .search-input-wrap{
+    flex:1; display:flex; align-items:center; gap:8px;
+    background:var(--canvas); border:1px solid var(--line); border-radius:12px;
+    padding:0 12px; height:42px;
+  }
+  .search-input-wrap svg{ width:15px; height:15px; color:var(--steel); flex-shrink:0; }
+  .search-input{
+    flex:1; border:none; background:none; outline:none;
+    font-family:var(--font-body); font-size:14px; color:var(--ink); height:100%;
+  }
+  .search-input::placeholder{ color:var(--steel); }
+  .search-clear{ border:none; background:none; color:var(--steel); cursor:pointer; display:none; padding:2px; }
+  .search-clear svg{ width:13px; height:13px; display:block; }
+  .search-input-wrap.has-value .search-clear{ display:flex; }
+  .search-close-btn{
+    flex-shrink:0; width:42px; height:42px; border-radius:12px; border:1px solid var(--line);
+    background:var(--white); color:var(--ink); cursor:pointer; display:flex; align-items:center; justify-content:center;
+  }
+  .search-close-btn svg{ width:14px; height:14px; }
+  .search-close-btn:hover{ background:var(--canvas); }
+  .search-go-btn{
+    flex-shrink:0; width:42px; height:42px; border-radius:12px; border:none;
+    background:var(--grad-dark); color:#fff; cursor:pointer; display:flex; align-items:center; justify-content:center;
+  }
+  .search-go-btn svg{ width:15px; height:15px; }
+  .search-go-btn:hover{ opacity:0.88; }
+
+  .search-popular{ margin-top:12px; display:flex; flex-wrap:wrap; gap:6px; }
+  .search-popular-label{ width:100%; font-size:11px; font-weight:600; color:var(--steel); text-transform:uppercase; letter-spacing:0.04em; margin-bottom:2px; }
+  .search-chip{
+    font-family:var(--font-body); font-size:12px; font-weight:500; color:var(--ink);
+    background:var(--canvas); border:1px solid var(--line); border-radius:20px; padding:6px 12px; cursor:pointer;
+  }
+  .search-chip:hover{ background:var(--canvas-2); }
+
+  .search-suggest-list{ margin-top:10px; display:flex; flex-direction:column; max-height:320px; overflow-y:auto; }
+  .search-empty{ margin-top:16px; text-align:center; padding:22px 10px; color:var(--steel); font-size:13px; }
+
+  /* ---- "Product view" row: Thumbnail | Title | View Details button ---- */
+  .product-view-item{ display:flex; align-items:center; gap:12px; width:100%; padding:10px 4px; border-bottom:1px solid var(--line); background:none; }
+  .search-suggest-list .product-view-item:last-child{ border-bottom:none; }
+  .product-view-thumb{ width:44px; height:44px; border-radius:10px; flex-shrink:0; background:var(--grad-dark); }
+  .product-view-title{ flex:1; min-width:0; font-size:13.5px; font-weight:700; color:var(--ink); overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+  .product-view-title mark{ background:none; color:var(--dark-2); font-weight:800; padding:0; }
+  .product-view-btn{
+    flex-shrink:0; padding:8px 15px; border-radius:20px; border:1px solid var(--ink);
+    background:var(--white); color:var(--ink); font-family:var(--font-body); font-size:11.5px; font-weight:700;
+    cursor:pointer; white-space:nowrap;
+  }
+  .product-view-btn:hover{ background:var(--ink); color:#fff; }
+
+  /* ---- Full-page search results, "product view" list ---- */
+  .search-results-page{
+    position:fixed; inset:0; background:var(--white); z-index:200;
+    transform:translateX(100%); transition:transform 0.3s ease;
+    overflow-y:auto; visibility:hidden;
+  }
+  .search-results-page.open{ transform:translateX(0); visibility:visible; }
+  .srp-topbar{
+    display:flex; align-items:center; gap:12px; padding:14px 16px;
+    border-bottom:1px solid var(--line); position:sticky; top:0; background:var(--white); z-index:2;
+  }
+  .srp-back-btn{
+    flex-shrink:0; width:36px; height:36px; border-radius:10px; border:1px solid var(--line);
+    background:var(--canvas); color:var(--ink); cursor:pointer; display:flex; align-items:center; justify-content:center;
+  }
+  .srp-back-btn svg{ width:15px; height:15px; }
+  .srp-back-btn:hover{ background:var(--canvas-2); }
+  .srp-title{ font-family:var(--font-display); font-weight:800; font-size:15px; text-transform:uppercase; letter-spacing:0.02em; color:var(--ink); overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+  .srp-body{ max-width:680px; margin:0 auto; padding:6px 16px 40px; }
+  .srp-body .product-view-thumb{ width:56px; height:56px; }
+  .srp-body .product-view-title{ font-size:14.5px; white-space:normal; }
+
+  .demo-note{ max-width:1180px; margin:40px auto; padding:0 20px; color:var(--steel); font-size:14px; line-height:1.6; }
+  .demo-note code{ font-family:var(--font-mono); background:var(--canvas-2); padding:2px 6px; border-radius:3px; }
+  .demo-note a{ color:var(--dark-2); font-weight:600; text-decoration:underline; }
+  .demo-toggle-btn{
+    margin-top:4px; padding:8px 14px; border-radius:8px; border:1px solid var(--line);
+    background:var(--ink); color:#fff; font-family:var(--font-body); font-size:13px; font-weight:600;
+    cursor:pointer;
+  }
+  .demo-toggle-btn:hover{ background:var(--dark-1); }
+
+  /* ===== CART DRAWER ===== */
+  .cart-drawer-overlay{
+    position:fixed; top:var(--header-h, 63px); left:0; right:0; bottom:0; background:rgba(19,19,22,0.38);
+    z-index:200; opacity:0; visibility:hidden;
+    transition:opacity 0.25s ease, visibility 0.25s;
+  }
+  .cart-drawer-overlay.open{ opacity:1; visibility:visible; }
+  .cart-drawer{
+    position:fixed; top:var(--header-h, 63px); right:0; bottom:0;
+    width:66.667vw; min-width:240px; max-width:380px;
+    background:#F4F3EF; z-index:201;
+    transform:translateX(110%);
+    transition:transform 0.3s cubic-bezier(0.4,0,0.2,1);
+    display:flex; flex-direction:column; overflow:hidden;
+    box-shadow:-8px 0 32px rgba(19,19,22,0.14);
+  }
+  .cart-drawer.open{ transform:translateX(0); }
+  .cart-drawer-head{
+    display:flex; align-items:center; justify-content:space-between;
+    padding:12px 14px 10px; border-bottom:1px solid rgba(19,19,22,0.10);
+    background:#F4F3EF; flex-shrink:0; gap:6px;
+  }
+  .cart-drawer-title{
+    font-family:var(--font-display); font-weight:800; font-size:14px;
+    text-transform:uppercase; letter-spacing:0.02em; color:#131316; flex-shrink:0;
+  }
+  .cart-drawer-hdr-actions{ display:flex; align-items:center; gap:5px; margin-left:auto; }
+  .cart-drawer-close{
+    width:26px; height:26px; border-radius:7px; border:1px solid rgba(19,19,22,0.14);
+    background:#fff; color:#131316; cursor:pointer;
+    display:flex; align-items:center; justify-content:center; flex-shrink:0;
+  }
+  .cart-drawer-close svg{ width:11px; height:11px; }
+  .cart-drawer-close:hover{ background:rgba(19,19,22,0.06); }
+  .cart-drawer-hdr-btn{
+    padding:5px 9px; border-radius:20px; border:1px solid rgba(19,19,22,0.14);
+    background:#fff; color:#E5766B; font-family:var(--font-body); font-size:9.5px; font-weight:700;
+    white-space:nowrap; cursor:pointer;
+  }
+  .cart-drawer-hdr-btn:hover{ background:rgba(229,118,107,0.08); border-color:rgba(229,118,107,0.35); }
+  .cart-drawer-hdr-btn:disabled{ color:rgba(19,19,22,0.3); border-color:rgba(19,19,22,0.1); background:#fff; cursor:not-allowed; }
+  .cart-drawer-body{
+    flex:1; overflow-y:auto; padding:12px 10px;
+    display:flex; flex-direction:column; gap:10px;
+  }
+  .cart-drawer-body.has-bar{ padding-bottom:90px; }
+  .cd-card{
+    position:relative; background:rgba(12,12,13,0.82);
+    -webkit-backdrop-filter:blur(22px) saturate(140%); backdrop-filter:blur(22px) saturate(140%);
+    border:1px solid rgba(255,255,255,0.16); border-radius:14px; padding:11px 11px 10px;
+    box-shadow:0 8px 20px rgba(12,12,13,0.16), inset 0 1px 0 rgba(255,255,255,0.06); flex-shrink:0;
+  }
+  .cd-select-box{
+    position:absolute; top:-6px; left:-6px; width:20px; height:20px;
+    border-radius:6px; border:1.5px solid rgba(255,255,255,0.16);
+    background:#0C0C0D; display:flex; align-items:center; justify-content:center;
+    box-shadow:0 2px 6px rgba(12,12,13,0.25); cursor:pointer;
+  }
+  .cd-select-box svg{ width:10px; height:10px; color:transparent; }
+  .cd-select-box.checked{ background:rgba(245,245,247,1); border-color:rgba(245,245,247,1); }
+  .cd-select-box.checked svg{ color:#0C0C0D; }
+  .cd-card-top{ display:flex; gap:9px; padding-left:6px; }
+  .cd-thumb{
+    width:46px; height:46px; border-radius:10px; flex-shrink:0;
+    background:rgba(255,255,255,0.12); border:1px solid rgba(255,255,255,0.16);
+    display:flex; align-items:center; justify-content:center; margin-top:1px;
+  }
+  .cd-thumb svg{ width:18px; height:18px; color:rgba(245,245,247,1); opacity:0.7; }
+  .cd-detail{ flex:1; min-width:0; }
+  .cd-row1{ display:flex; align-items:flex-start; justify-content:space-between; gap:6px; }
+  .cd-title{ font-size:11.5px; font-weight:700; line-height:1.3; letter-spacing:-0.01em; color:rgba(245,245,247,1); }
+  .cd-remove{
+    flex-shrink:0; width:20px; height:20px; border-radius:5px;
+    border:1px solid rgba(255,255,255,0.16); background:rgba(255,255,255,0.06);
+    color:rgba(245,245,247,0.54); display:flex; align-items:center; justify-content:center; cursor:pointer;
+  }
+  .cd-remove svg{ width:10px; height:10px; }
+  .cd-remove:hover{ color:#E5766B; border-color:#E5766B; }
+  .cd-row2{ display:flex; align-items:center; gap:5px; margin-top:3px; font-size:9.5px; color:rgba(245,245,247,0.54); flex-wrap:wrap; }
+  .cd-row2 .sep{ width:2px; height:2px; border-radius:50%; background:rgba(245,245,247,0.38); flex-shrink:0; }
+  .cd-row2 b{ color:rgba(245,245,247,1); font-weight:600; }
+  .cd-row3{ display:flex; align-items:center; gap:4px; margin-top:6px; flex-wrap:wrap; }
+  .cd-chip{
+    display:flex; align-items:center; gap:3px; padding:2.5px 7px;
+    border-radius:20px; border:1px solid rgba(255,255,255,0.16);
+    font-size:9px; font-weight:500; color:rgba(245,245,247,0.54); background:rgba(255,255,255,0.06);
+  }
+  .cd-chip b{ font-weight:600; color:rgba(245,245,247,1); }
+  .cd-chip .dot{ width:5px; height:5px; border-radius:50%; flex-shrink:0; }
+  .cd-qty{
+    display:flex; align-items:center; border:1px solid rgba(255,255,255,0.16);
+    border-radius:20px; background:rgba(255,255,255,0.06); overflow:hidden; margin-left:auto;
+  }
+  .cd-qty-btn{ width:18px; height:18px; border:none; background:none; color:rgba(245,245,247,1); display:flex; align-items:center; justify-content:center; cursor:pointer; }
+  .cd-qty-btn svg{ width:8px; height:8px; }
+  .cd-qty-btn:disabled{ color:rgba(245,245,247,0.38); cursor:not-allowed; }
+  .cd-qty-btn:hover:not(:disabled){ background:rgba(255,255,255,0.12); }
+  .cd-qty-val{ min-width:16px; text-align:center; font-size:10px; font-weight:700; color:rgba(245,245,247,1); font-variant-numeric:tabular-nums; }
+  .cd-divider{ height:1px; background:rgba(255,255,255,0.14); margin:9px 0 8px; }
+  .cd-bottom{ display:flex; align-items:center; justify-content:space-between; gap:6px; }
+  .cd-ps-toggle{ display:flex; align-items:center; gap:4px; background:none; border:none; padding:4px 2px; cursor:pointer; }
+  .cd-ps-label{ font-size:9.5px; font-weight:600; color:rgba(245,245,247,0.54); }
+  .cd-ps-chevron{ width:10px; height:10px; transition:transform .2s ease; flex-shrink:0; color:rgba(245,245,247,0.54); }
+  .cd-card.ps-open .cd-ps-chevron{ transform:rotate(180deg); }
+  .cd-btn-checkout{ padding:6px 14px; border-radius:20px; border:1px solid #fff; background:#fff; color:#0C0C0D; font-family:var(--font-body); font-size:10px; font-weight:700; cursor:pointer; white-space:nowrap; }
+  .cd-btn-checkout:hover{ background:#E8E8EA; }
+  .cd-ps-details{
+    margin-top:8px; padding:8px 9px; border-radius:9px;
+    background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.16);
+    display:flex; flex-direction:column; gap:4px;
+  }
+  .cd-ps-details[hidden]{ display:none; }
+  .cd-ps-row{ display:flex; align-items:center; justify-content:space-between; font-size:9.5px; }
+  .cd-ps-row .psl{ color:rgba(245,245,247,0.54); }
+  .cd-ps-row .psv{ font-weight:600; color:rgba(245,245,247,1); font-variant-numeric:tabular-nums; }
+  .cd-ps-row.discount .psv{ color:#5CD088; }
+  .cd-bulk-bar{
+    position:sticky; bottom:0; z-index:5;
+    padding:8px 0 calc(10px + env(safe-area-inset-bottom));
+    background:linear-gradient(180deg, rgba(244,243,239,0) 0%, #F4F3EF 30%);
+    flex-shrink:0;
+  }
+  .cd-bulk-inner{
+    display:flex; align-items:center; gap:6px;
+    background:rgba(12,12,13,0.85); -webkit-backdrop-filter:blur(22px) saturate(140%);
+    backdrop-filter:blur(22px) saturate(140%); border:1px solid rgba(255,255,255,0.16);
+    border-radius:12px; padding:9px 10px; box-shadow:0 10px 24px rgba(12,12,13,0.22);
+  }
+  .cd-bulk-count{ flex:1; min-width:0; font-size:10px; color:rgba(245,245,247,0.54); font-weight:600; }
+  .cd-bulk-count b{ color:rgba(245,245,247,1); font-weight:800; font-size:11px; margin-right:2px; }
+  .cd-cancel-sel{ flex-shrink:0; padding:7px 10px; border-radius:8px; border:1px solid rgba(255,255,255,0.16); background:rgba(255,255,255,0.06); color:rgba(245,245,247,0.54); font-family:var(--font-body); font-size:10px; font-weight:600; cursor:pointer; }
+  .cd-cancel-sel:hover{ border-color:rgba(255,255,255,0.26); color:rgba(245,245,247,1); }
+  .cd-checkout-sel{ flex:1; padding:7px 12px; border-radius:8px; border:1px solid #fff; background:#fff; color:#0C0C0D; font-family:var(--font-body); font-size:10px; font-weight:700; cursor:pointer; }
+  .cd-checkout-sel:hover{ background:#E8E8EA; }
+  .cd-empty{ text-align:center; padding:50px 16px; }
+  .cd-empty svg{ width:32px; height:32px; color:rgba(19,19,22,0.22); margin:0 auto 10px; display:block; }
+  .cd-empty-title{ font-size:13px; font-weight:700; color:#131316; }
+  .cd-empty-sub{ font-size:11px; color:rgba(19,19,22,0.45); margin-top:3px; }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <div class="logo">
+      <a class="logo-link" href="../index.html" aria-label="Millennial Clothing home">
+        <span class="logo-badge-3d">
+          <img src="data:image/png;base64,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" alt="Millennial Clothing logo" class="logo-mark">
+        </span>
+      </a>
+    </div>
+
+    <div class="header-icons">
+      <button class="icon-btn" type="button" id="searchToggleBtn" aria-label="Search" aria-expanded="false">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+      </button>
+      <div class="notif-wrap" id="notifWrap">
+        <button class="icon-btn notif-btn" type="button" id="notifToggleBtn" aria-label="Notifications" aria-haspopup="menu" aria-expanded="false">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
+          <span class="icon-dot" id="notifBadge"></span>
+        </button>
+
+        <div class="notif-dropdown" id="notifDropdown" role="menu" aria-label="Notifications">
+          <div class="notif-head">
+            <div class="notif-head-title">Notifications</div>
+            <div class="notif-head-actions">
+              <button type="button" class="notif-head-btn" id="notifReadAllBtn">Read All</button>
+              <span class="notif-head-sep">·</span>
+              <button type="button" class="notif-head-btn" id="notifClearAllBtn">Clear All</button>
+            </div>
+          </div>
+          <div class="notif-divider"></div>
+          <div class="notif-list" id="notifList"></div>
+          <div class="notif-empty" id="notifEmpty" style="display:none;">You're all caught up</div>
+        </div>
+      </div>
+      <button class="icon-btn" type="button" id="cartToggleBtn" aria-label="Cart" aria-expanded="false" onclick="window.__cartToggle(event)">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+        <span class="icon-dot"></span>
+      </button>
+      <div class="profile-wrap" id="profileWrap">
+        <button class="icon-btn profile-btn" type="button" id="profileBtn" aria-label="Profile / Login" aria-haspopup="menu" aria-expanded="false">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+        </button>
+
+        <div class="profile-dropdown" id="profileDropdown" role="menu" aria-label="Account menu">
+          <div class="profile-name-row">
+            <div class="profile-name" id="profileName">Hi, Rafiul</div>
+            <div class="profile-email" id="profileEmail">rafiul@example.com</div>
+          </div>
+          <div class="profile-divider"></div>
+
+          <a class="profile-item" href="../my-profile.html" role="menuitem">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+            View Profile
+          </a>
+          <a class="profile-item" href="../track-order.html" role="menuitem">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="7" width="18" height="14" rx="2"/><path d="M16 3h-8a2 2 0 0 0-2 2v2h12V5a2 2 0 0 0-2-2z"/></svg>
+            My Orders
+          </a>
+          <a class="profile-item" href="../cart.html" role="menuitem">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+            My Carts
+          </a>
+          <a class="profile-item" href="../wishlist.html" role="menuitem">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.6l-1-1a5.5 5.5 0 0 0-7.8 7.8l1 1L12 21l7.8-7.6 1-1a5.5 5.5 0 0 0 0-7.8z"/></svg>
+            Wishlist
+          </a>
+          <a class="profile-item" href="../quotes.html" role="menuitem">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="8" y1="13" x2="16" y2="13"/><line x1="8" y1="17" x2="16" y2="17"/></svg>
+            Quotes
+          </a>
+          <a class="profile-item" href="../track-order.html" role="menuitem">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9 12l2 2 4-4"/></svg>
+            Track Order
+          </a>
+          <div class="profile-divider"></div>
+          <a class="profile-item" href="../login.html?switch=1" role="menuitem">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 1l4 4-4 4"/><path d="M3 11V9a4 4 0 0 1 4-4h14"/><path d="M7 23l-4-4 4-4"/><path d="M21 13v2a4 4 0 0 1-4 4H3"/></svg>
+            Switch Account
+          </a>
+          <a class="profile-item profile-item-danger" href="#" role="menuitem" id="logoutBtn">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
+            Log Out
+          </a>
+        </div>
+      </div>
+      <button class="icon-btn menu-btn" type="button" aria-label="Menu" aria-expanded="false" onclick="toggleMenu(this)">
+        <span class="menu-lines"><span></span><span></span><span></span></span>
+      </button>
+    </div>
+  </div>
+
+  <div class="search-panel" id="searchPanel">
+    <div class="search-panel-inner">
+      <div class="search-bar-row">
+        <div class="search-input-wrap" id="searchInputWrap">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+          <input type="text" class="search-input" id="searchInput" placeholder="Search jackets, gloves, boots..." autocomplete="off">
+          <button type="button" class="search-clear" id="searchClearBtn" aria-label="Clear search">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+          </button>
+        </div>
+        <button type="button" class="search-go-btn" id="searchGoBtn" aria-label="Search">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        </button>
+        <button type="button" class="search-close-btn" id="searchCloseBtn" aria-label="Close search">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        </button>
+      </div>
+
+      <div class="search-popular" id="searchPopular">
+        <div class="search-popular-label">Popular Searches</div>
+      </div>
+
+      <div class="search-suggest-list" id="searchSuggestList"></div>
+    </div>
+  </div>
+
+  <!-- Search results — opens as its own full page in "product view" style: Thumbnail | Title | View Details -->
+  <div class="search-results-page" id="searchResultsPage">
+    <div class="srp-topbar">
+      <button type="button" class="srp-back-btn" id="srpBackBtn" aria-label="Back to search">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+      </button>
+      <div class="srp-title" id="srpTitle">Results</div>
+    </div>
+    <div class="srp-body" id="srpBody"></div>
+  </div>
+
+</header>
+
+  <div class="menu-drawer-overlay" id="menuOverlay"></div>
+  <nav class="expand-menu" id="expandMenu">
+    <div class="expand-menu-inner">
+      <a href="../index.html" class="menu-link">Home</a>
+      <a href="../store-page.html" class="menu-link">Browse Shop</a>
+
+      <div class="menu-accordion">
+        <button type="button" class="menu-accordion-head" data-acc-target="acc-collection" aria-expanded="false">
+          <span>Collection</span>
+          <svg class="acc-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+        </button>
+        <div class="menu-accordion-body" id="acc-collection">
+          <div class="menu-accordion-body-inner">
+            <a href="../store-page.html?cat=Sportswear">Sportswear</a>
+            <a href="../store-page.html?cat=Riding%20Gear">Riding Gear</a>
+            <a href="../store-page.html?cat=Streetwear">Streetwear</a>
+            <a href="../store-page.html?cat=Formal%20Wear">Formal Wear</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="menu-accordion">
+        <button type="button" class="menu-accordion-head" data-acc-target="acc-categories" aria-expanded="false">
+          <span>Categories</span>
+          <svg class="acc-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+        </button>
+        <div class="menu-accordion-body" id="acc-categories">
+          <div class="menu-accordion-body-inner nested-list">
+
+            <div class="menu-subaccordion">
+              <button type="button" class="menu-subaccordion-head" data-sub-target="sub-mens-wear" aria-expanded="false">
+                <span>Men's Wear</span>
+                <svg class="acc-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+              </button>
+              <div class="menu-subaccordion-body" id="sub-mens-wear">
+                <div class="menu-subaccordion-body-inner">
+                  <a href="../store-page.html?sub=T-Shirts">T-Shirts</a>
+                  <a href="../store-page.html?sub=Shirts">Shirts</a>
+                  <a href="../store-page.html?sub=Trousers">Trousers</a>
+                  <a href="../store-page.html?sub=Jackets">Jackets</a>
+                </div>
+              </div>
+            </div>
+
+            <div class="menu-subaccordion">
+              <button type="button" class="menu-subaccordion-head" data-sub-target="sub-womens-wear" aria-expanded="false">
+                <span>Women's Wear</span>
+                <svg class="acc-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+              </button>
+              <div class="menu-subaccordion-body" id="sub-womens-wear">
+                <div class="menu-subaccordion-body-inner">
+                  <a href="../store-page.html?sub=Tops">Tops</a>
+                  <a href="../store-page.html?sub=Dresses">Dresses</a>
+                  <a href="../store-page.html?sub=Jeans">Jeans</a>
+                  <a href="../store-page.html?sub=Outerwear">Outerwear</a>
+                </div>
+              </div>
+            </div>
+
+            <div class="menu-subaccordion">
+              <button type="button" class="menu-subaccordion-head" data-sub-target="sub-footwear" aria-expanded="false">
+                <span>Footwear</span>
+                <svg class="acc-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+              </button>
+              <div class="menu-subaccordion-body" id="sub-footwear">
+                <div class="menu-subaccordion-body-inner">
+                  <a href="../store-page.html?sub=Sneakers">Sneakers</a>
+                  <a href="../store-page.html?sub=Boots">Boots</a>
+                  <a href="../store-page.html?sub=Sandals">Sandals</a>
+                </div>
+              </div>
+            </div>
+
+            <div class="menu-subaccordion">
+              <button type="button" class="menu-subaccordion-head" data-sub-target="sub-accessories" aria-expanded="false">
+                <span>Accessories</span>
+                <svg class="acc-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+              </button>
+              <div class="menu-subaccordion-body" id="sub-accessories">
+                <div class="menu-subaccordion-body-inner">
+                  <a href="../store-page.html?sub=Bags">Bags</a>
+                  <a href="../store-page.html?sub=Belts">Belts</a>
+                  <a href="../store-page.html?sub=Caps">Caps</a>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+      <div class="menu-accordion">
+        <button type="button" class="menu-accordion-head" data-acc-target="acc-department" aria-expanded="false">
+          <span>Department</span>
+          <svg class="acc-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+        </button>
+        <div class="menu-accordion-body" id="acc-department">
+          <div class="menu-accordion-body-inner">
+            <a href="../store-page.html?dept=Men">Men</a>
+            <a href="../store-page.html?dept=Women">Women</a>
+            <a href="../store-page.html?dept=Unisex">Unisex</a>
+            <a href="../store-page.html?dept=Kids">Kids</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="menu-accordion">
+        <button type="button" class="menu-accordion-head" data-acc-target="acc-brands" aria-expanded="false">
+          <span>Brands</span>
+          <svg class="acc-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+        </button>
+        <div class="menu-accordion-body" id="acc-brands">
+          <div class="menu-accordion-body-inner">
+            <a href="../store-page.html">All Brands</a>
+            <a href="../store-page.html">Featured Brands</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="menu-accordion">
+        <button type="button" class="menu-accordion-head" data-acc-target="acc-corporate" aria-expanded="false">
+          <span>Corporate Purchase</span>
+          <svg class="acc-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+        </button>
+        <div class="menu-accordion-body" id="acc-corporate">
+          <div class="menu-accordion-body-inner">
+            <a href="../bulk-landing.html">Manufacturing</a>
+            <a href="../bulk-catalog.html">Bulk Purchase</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="menu-brand-strip">
+        <a href="../corporate-landing.html" class="menu-brand-badge">Millennial Corporate</a>
+        <span class="menu-brand-sep">|</span>
+        <a href="#" class="menu-brand-badge">AP International</a>
+        <span class="menu-brand-sep">|</span>
+        <a href="#" class="menu-brand-badge">Minas Dream</a>
+      </div>
+
+      <a href="../contact-us.html" class="menu-link">Contact Us</a>
+    </div>
+  </nav>
+
+<!-- Small popup shown when a notification's "Read" button is clicked -->
+<div class="notif-modal-overlay" id="notifModalOverlay">
+  <div class="notif-modal" role="dialog" aria-modal="true" aria-labelledby="notifModalTitle">
+    <div class="notif-modal-banner" id="notifModalBanner">
+      <button type="button" class="notif-modal-close" id="notifModalCloseBtn" aria-label="Close">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+    </div>
+    <div class="notif-modal-body">
+      <div class="notif-modal-title" id="notifModalTitle"></div>
+      <div class="notif-modal-time" id="notifModalTime"></div>
+      <div class="notif-modal-desc" id="notifModalDesc"></div>
+      <a href="#" class="notif-modal-cta" id="notifModalCta" target="_self" rel="noopener"></a>
+    </div>
+  </div>
+</div>
+
+<div class="demo-note">
+  This is the standalone header component — Light Ash + Dark Black gradient theme, used site-wide. Drop the <code>&lt;header&gt;</code> block and its styles/script into any page. The hamburger expands the nav panel, and the logo/icon buttons are fixed-size glass cards (icons at 80% of the logo card).<br><br>
+  <strong>Profile icon:</strong> logged out, it goes straight to <a href="../login.html">login.html</a>. Logged in, it opens an account dropdown with View Profile, My Orders, My Carts, Wishlist, Quotes, Track Order, Switch Account and Log Out.<br><br>
+  <button type="button" id="demoLoginToggle" class="demo-toggle-btn">Demo: Logged Out (tap to log in)</button><br>
+  <span style="font-size:12px;">(The <code>?loggedin=1</code> URL flag also works when this page is hosted on a real URL — it just can't be appended to a local <code>content://</code>/<code>file://</code> link opened from Downloads, which is why the button above exists.)</span>
+</div>
+
+<script>
+  // ===================================================================
+  // Header icon panels (search / notifications / profile / cart / nav)
+  // are mutually exclusive: opening one closes whichever other was open.
+  // ===================================================================
+  window.__headerPanel = (function(){
+    var closers = {};
+    var active = null;
+    return {
+      register: function(name, closeFn){ closers[name] = closeFn; },
+      open: function(name){
+        if(active && active !== name && closers[active]) closers[active]();
+        active = name;
+      },
+      closed: function(name){ if(active === name) active = null; }
+    };
+  })();
+
+  function openNavMenu(){
+    document.getElementById('expandMenu').classList.add('open');
+    document.getElementById('menuOverlay').classList.add('open');
+    var b = document.querySelector('.menu-btn'); if(b) b.setAttribute('aria-expanded', 'true');
+    window.__headerPanel.open('nav');
+  }
+  function closeNavMenu(){
+    document.getElementById('expandMenu').classList.remove('open');
+    document.getElementById('menuOverlay').classList.remove('open');
+    var b = document.querySelector('.menu-btn'); if(b) b.setAttribute('aria-expanded', 'false');
+    window.__headerPanel.closed('nav');
+  }
+  function toggleMenu(btn){
+    var expanded = btn.getAttribute('aria-expanded') === 'true';
+    expanded ? closeNavMenu() : openNavMenu();
+  }
+  window.__headerPanel.register('nav', closeNavMenu);
+  document.getElementById('menuOverlay').addEventListener('click', closeNavMenu);
+  document.addEventListener('keydown', function(e){
+    if(e.key === 'Escape' && document.getElementById('expandMenu').classList.contains('open')) closeNavMenu();
+  });
+
+  // ===================================================================
+  // Nav accordion: Collection / Brands / Corporate Purchase.
+  // Opening one automatically collapses whichever other section was open.
+  // ===================================================================
+  (function(){
+    var heads = document.querySelectorAll('.menu-accordion-head');
+    heads.forEach(function(head){
+      head.addEventListener('click', function(){
+        var targetId = head.getAttribute('data-acc-target');
+        var body = document.getElementById(targetId);
+        var isOpen = head.getAttribute('aria-expanded') === 'true';
+
+        // Collapse every section first
+        heads.forEach(function(h){
+          h.setAttribute('aria-expanded', 'false');
+          var b = document.getElementById(h.getAttribute('data-acc-target'));
+          if(b) b.style.maxHeight = null;
+        });
+
+        // Re-open the clicked one, unless it was already open (toggle closed)
+        if(!isOpen){
+          head.setAttribute('aria-expanded', 'true');
+          body.style.maxHeight = body.scrollHeight + 'px';
+        }
+      });
+    });
+  })();
+
+  // ===================================================================
+  // Nested sub-accordion: Categories -> Men's Wear / Women's Wear /
+  // Footwear / Accessories, each expanding to its own subcategories.
+  // Opening one collapses any other subcategory list that was open,
+  // and the parent "Categories" panel reflows so nothing gets clipped.
+  // ===================================================================
+  (function(){
+    var subHeads = document.querySelectorAll('.menu-subaccordion-head');
+    subHeads.forEach(function(head){
+      head.addEventListener('click', function(e){
+        e.stopPropagation();
+        var targetId = head.getAttribute('data-sub-target');
+        var body = document.getElementById(targetId);
+        var isOpen = head.getAttribute('aria-expanded') === 'true';
+        var group = head.closest('.menu-accordion-body-inner');
+
+        group.querySelectorAll('.menu-subaccordion-head').forEach(function(h){
+          h.setAttribute('aria-expanded', 'false');
+          var b = document.getElementById(h.getAttribute('data-sub-target'));
+          if(b) b.style.maxHeight = null;
+        });
+
+        if(!isOpen){
+          head.setAttribute('aria-expanded', 'true');
+          body.style.maxHeight = body.scrollHeight + 'px';
+        }
+
+        // Reflow the ancestor top-level accordion body so the extra
+        // height from the opened/closed subcategory list isn't clipped.
+        var parentBody = head.closest('.menu-accordion-body');
+        if(parentBody && parentBody.style.maxHeight){
+          requestAnimationFrame(function(){
+            parentBody.style.maxHeight = parentBody.scrollHeight + 'px';
+          });
+        }
+      });
+    });
+  })();
+
+  // ===================================================================
+  // Profile icon behaviour:
+  //   - Logged OUT -> clicking the icon goes straight to login.html
+  //   - Logged IN  -> clicking the icon opens the account dropdown
+  //
+  // Replace `isLoggedIn` below with a real check against your session/
+  // auth state (a cookie, a server-rendered flag, an API call, etc).
+  // For quickly previewing both states in this demo, add ?loggedin=1
+  // to the URL to see the dropdown, or leave it off to see the login
+  // redirect.
+  // ===================================================================
+  (function(){
+    var qpLoggedIn = new URLSearchParams(window.location.search).get('loggedin') === '1';
+    var lsLoggedIn = localStorage.getItem('demoLoggedIn') === '1';
+    var isLoggedIn = qpLoggedIn || lsLoggedIn;
+
+    var profileBtn = document.getElementById('profileBtn');
+    var dropdown = document.getElementById('profileDropdown');
+    var logoutBtn = document.getElementById('logoutBtn');
+    var demoToggle = document.getElementById('demoLoginToggle');
+
+    function refreshDemoToggle(){
+      if(demoToggle) demoToggle.textContent = isLoggedIn ? 'Demo: Logged In (tap to log out)' : 'Demo: Logged Out (tap to log in)';
+    }
+    refreshDemoToggle();
+    if(demoToggle){
+      demoToggle.addEventListener('click', function(){
+        localStorage.setItem('demoLoggedIn', isLoggedIn ? '0' : '1');
+        window.location.reload();
+      });
+    }
+
+    function closeDropdown(){
+      dropdown.classList.remove('open');
+      profileBtn.setAttribute('aria-expanded', 'false');
+      window.__headerPanel.closed('profile');
+    }
+    window.__headerPanel.register('profile', closeDropdown);
+
+    profileBtn.addEventListener('click', function(e){
+      e.stopPropagation();
+
+      if(!isLoggedIn){
+        window.location.href = '../login.html';
+        return;
+      }
+
+      var willOpen = !dropdown.classList.contains('open');
+      if(willOpen) window.__headerPanel.open('profile');
+      dropdown.classList.toggle('open', willOpen);
+      profileBtn.setAttribute('aria-expanded', String(willOpen));
+    });
+
+    // Close the dropdown on outside click / Escape
+    document.addEventListener('click', function(e){
+      if(!dropdown.contains(e.target) && e.target !== profileBtn){
+        closeDropdown();
+      }
+    });
+    document.addEventListener('keydown', function(e){
+      if(e.key === 'Escape') closeDropdown();
+    });
+
+    // Log Out -> clear the (demo) session and return to the login page
+    logoutBtn.addEventListener('click', function(e){
+      e.preventDefault();
+      isLoggedIn = false;
+      localStorage.setItem('demoLoggedIn', '0');
+      closeDropdown();
+      window.location.href = '../login.html';
+    });
+  })();
+
+  // ===================================================================
+  // Notification bell: hang-tag dropdown with Read All / Clear All,
+  // per-item Read / Ignore, and a small popup with the full description.
+  //
+  // NOTIFICATIONS below is a demo feed standing in for real admin-panel
+  // events (order status changes, quote updates, newsletter posts,
+  // etc). Wire it up to your backend/websocket and the render/read/
+  // ignore/clear logic below keeps working unchanged.
+  // ===================================================================
+  (function(){
+    // Category -> banner icon (drawn on the modal's dark gradient banner)
+    var ICONS = {
+      order:   '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16.5 9.4 7.5 4.21"/><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16Z"/><path d="m3.3 7 8.7 5 8.7-5"/><path d="M12 22V12"/></svg>',
+      quote:   '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19h6v-6H6.5A2.5 2.5 0 0 1 4 10.5v-1A2.5 2.5 0 0 1 6.5 7H8"/><path d="M14 19h6v-6h-3.5A2.5 2.5 0 0 1 14 10.5v-1A2.5 2.5 0 0 1 16.5 7H18"/></svg>',
+      news:    '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 22h14a2 2 0 0 0 2-2V7l-5-5H6a2 2 0 0 0-2 2v4"/><path d="M14 2v5h5"/><path d="M4 13h4"/><path d="M4 17h4"/></svg>',
+      payment: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="20" height="14" rx="2"/><line x1="2" y1="10" x2="22" y2="10"/></svg>'
+    };
+    var DEFAULT_VISIBLE = 4;
+    var expanded = false;
+
+    var NOTIFICATIONS = [
+      { id:1, unread:true,  cat:'order', title:'Order #10432 Shipped', time:'2h ago',
+        snippet:'Your order has been shipped and is on its way.',
+        desc:'Your order #10432 has been shipped via Sundarban Courier and is expected to arrive within 2-3 business days. You can track the shipment anytime from the My Orders section.',
+        link:'../track-order.html?order=10432', cta:'Track Order' },
+      { id:2, unread:true,  cat:'quote', title:'Quote #Q-2291 Approved', time:'5h ago',
+        snippet:'Your custom quote request has been approved by admin.',
+        desc:'Your custom quote request Q-2291 for a 40-piece corporate order has been approved and priced at ৳86,000. Please review and confirm the quote to proceed with production.',
+        link:'../cart.html?quote=Q-2291', cta:'Review Quote' },
+      { id:3, unread:true,  cat:'news', title:'New Newsletter: July Rider Drop', time:'1d ago',
+        snippet:'The July Rider Collection is now live with launch pricing.',
+        desc:'The Millennial Clothing July Rider Collection is now live — new riding jackets, gloves and boots are up to 20% off for the first 100 orders. Check the Shop page before the offer ends.',
+        link:'../store-page.html?collection=july-rider', cta:'Shop the Drop' },
+      { id:4, unread:false, cat:'order', title:'Order #10410 Delivered', time:'2d ago',
+        snippet:'Your order was marked as delivered by admin.',
+        desc:'Order #10410 has been marked as delivered. We hope you enjoy your new gear! If anything needs attention, reach out from the My Orders section and our team will help.',
+        link:'../track-order.html?order=10410', cta:'View Order' },
+      { id:5, unread:false, cat:'quote', title:'Quote #Q-2287 Price Updated', time:'3d ago',
+        snippet:'Admin updated the pricing on your quote after a material change.',
+        desc:'Admin has updated the pricing on quote Q-2287 following a material change. The new total is ৳54,200. Please review the updated quote in My Carts before it expires.',
+        link:'../cart.html?quote=Q-2287', cta:'Review Quote' },
+      { id:6, unread:false, cat:'payment', title:'Payment Reminder — Order #10432', time:'4d ago',
+        snippet:'An invoice for your order is due in 3 days.',
+        desc:'An invoice for order #10432 is due in 3 days. Please complete payment from the My Orders section to avoid delays in processing and shipping.',
+        link:'../track-order.html?order=10432&action=pay', cta:'Pay Invoice' }
+    ];
+
+    var wrap = document.getElementById('notifWrap');
+    var toggleBtn = document.getElementById('notifToggleBtn');
+    var dropdown = document.getElementById('notifDropdown');
+    var badge = document.getElementById('notifBadge');
+    var list = document.getElementById('notifList');
+    var emptyState = document.getElementById('notifEmpty');
+    var readAllBtn = document.getElementById('notifReadAllBtn');
+    var clearAllBtn = document.getElementById('notifClearAllBtn');
+
+    var modalOverlay = document.getElementById('notifModalOverlay');
+    var modalBanner = document.getElementById('notifModalBanner');
+    var modalTitle = document.getElementById('notifModalTitle');
+    var modalTime = document.getElementById('notifModalTime');
+    var modalDesc = document.getElementById('notifModalDesc');
+    var modalCta = document.getElementById('notifModalCta');
+    var modalCloseBtn = document.getElementById('notifModalCloseBtn');
+
+    function updateBadge(){
+      badge.style.display = NOTIFICATIONS.some(function(n){ return n.unread; }) ? 'block' : 'none';
+    }
+
+    function render(){
+      list.innerHTML = '';
+      emptyState.style.display = NOTIFICATIONS.length ? 'none' : 'block';
+
+      // Default view shows only the first 4 notifications; "View all" reveals the rest.
+      var visible = expanded ? NOTIFICATIONS : NOTIFICATIONS.slice(0, DEFAULT_VISIBLE);
+
+      visible.forEach(function(n){
+        var item = document.createElement('div');
+        item.className = 'notif-item' + (n.unread ? ' unread' : '');
+        item.innerHTML =
+          '<span class="notif-item-dot"></span>' +
+          '<div class="notif-item-body">' +
+            '<div class="notif-item-top">' +
+              '<div class="notif-item-title"></div>' +
+              '<div class="notif-item-time"></div>' +
+            '</div>' +
+            '<div class="notif-item-snippet"></div>' +
+            '<div class="notif-item-actions">' +
+              '<button type="button" class="notif-action-link notif-toggle-btn"></button>' +
+              '<button type="button" class="notif-action-link notif-ignore-btn">Remove</button>' +
+            '</div>' +
+          '</div>';
+        item.querySelector('.notif-item-title').textContent = n.title;
+        item.querySelector('.notif-item-snippet').textContent = n.snippet;
+        item.querySelector('.notif-item-time').textContent = n.time;
+
+        // Unread items show "Read" (opens the detail popup and marks read).
+        // Already-read items show "Unread" (toggles the state back).
+        var toggleBtnEl = item.querySelector('.notif-toggle-btn');
+        toggleBtnEl.textContent = n.unread ? 'Read' : 'Unread';
+        toggleBtnEl.classList.toggle('notif-read-link', n.unread);
+        toggleBtnEl.addEventListener('click', function(e){
+          e.stopPropagation();
+          if(n.unread){
+            n.unread = false;
+            updateBadge();
+            render();
+            openModal(n);
+          } else {
+            n.unread = true;
+            updateBadge();
+            render();
+          }
+        });
+
+        item.querySelector('.notif-ignore-btn').addEventListener('click', function(e){
+          e.stopPropagation();
+          NOTIFICATIONS = NOTIFICATIONS.filter(function(x){ return x.id !== n.id; });
+          updateBadge();
+          render();
+        });
+
+        // Clicking the card body itself also opens the detail popup.
+        item.addEventListener('click', function(){
+          if(n.unread){ n.unread = false; updateBadge(); render(); }
+          openModal(n);
+        });
+
+        list.appendChild(item);
+      });
+
+      // "View all" / "Show less" toggle when there are more than the default 4.
+      var existingViewAll = document.getElementById('notifViewAllBtn');
+      if(existingViewAll) existingViewAll.remove();
+      if(NOTIFICATIONS.length > DEFAULT_VISIBLE){
+        var viewAllBtn = document.createElement('button');
+        viewAllBtn.type = 'button';
+        viewAllBtn.id = 'notifViewAllBtn';
+        viewAllBtn.className = 'notif-viewall';
+        viewAllBtn.textContent = expanded ? 'Show less' : 'View all (' + NOTIFICATIONS.length + ')';
+        viewAllBtn.addEventListener('click', function(e){
+          e.stopPropagation();
+          expanded = !expanded;
+          render();
+        });
+        list.parentNode.insertBefore(viewAllBtn, emptyState);
+      }
+    }
+
+    function openModal(n){
+      modalBanner.innerHTML = '<button type="button" class="notif-modal-close" id="notifModalCloseBtn" aria-label="Close"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>' + (ICONS[n.cat] || ICONS.order);
+      document.getElementById('notifModalCloseBtn').addEventListener('click', closeModal);
+      modalTitle.textContent = n.title;
+      modalTime.textContent = n.time;
+      modalDesc.textContent = n.desc;
+      modalCta.textContent = n.cta || 'View Details';
+      modalCta.href = n.link || '#';
+      modalOverlay.classList.add('open');
+    }
+    function closeModal(){
+      modalOverlay.classList.remove('open');
+    }
+
+    function positionDropdown(){
+      var margin = 12;
+      var naturalWidth = Math.min(322, window.innerWidth - margin * 2);
+      var wrapRect = wrap.getBoundingClientRect();
+      // Would a right-anchored panel of this width run past the LEFT edge?
+      var wouldOverflowLeft = (wrapRect.right - naturalWidth) < margin;
+
+      dropdown.classList.toggle('mobile-fixed', wouldOverflowLeft);
+
+      if(wouldOverflowLeft){
+        var headerEl = document.querySelector('header');
+        var headerRect = headerEl.getBoundingClientRect();
+        dropdown.style.top = (headerRect.bottom + 8) + 'px';
+      } else {
+        dropdown.style.top = '';
+      }
+    }
+
+    function openDropdown(){
+      window.__headerPanel.open('notif');
+      positionDropdown();
+      dropdown.classList.add('open');
+      toggleBtn.setAttribute('aria-expanded', 'true');
+    }
+    function closeDropdown(){
+      dropdown.classList.remove('open');
+      toggleBtn.setAttribute('aria-expanded', 'false');
+      window.__headerPanel.closed('notif');
+    }
+    window.__headerPanel.register('notif', closeDropdown);
+
+    window.addEventListener('resize', function(){
+      if(dropdown.classList.contains('open')) positionDropdown();
+    });
+
+    toggleBtn.addEventListener('click', function(e){
+      e.stopPropagation();
+      var willOpen = !dropdown.classList.contains('open');
+      willOpen ? openDropdown() : closeDropdown();
+    });
+
+    readAllBtn.addEventListener('click', function(){
+      NOTIFICATIONS.forEach(function(n){ n.unread = false; });
+      updateBadge();
+      render();
+    });
+    clearAllBtn.addEventListener('click', function(){
+      NOTIFICATIONS = [];
+      updateBadge();
+      render();
+    });
+
+    modalCloseBtn.addEventListener('click', closeModal);
+    modalOverlay.addEventListener('click', function(e){
+      if(e.target === modalOverlay) closeModal();
+    });
+
+    document.addEventListener('click', function(e){
+      if(!wrap.contains(e.target)) closeDropdown();
+    });
+    document.addEventListener('keydown', function(e){
+      if(e.key === 'Escape'){
+        if(modalOverlay.classList.contains('open')) closeModal();
+        else closeDropdown();
+      }
+    });
+
+    render();
+    updateBadge();
+  })();
+
+  // ===================================================================
+  // Site-wide search: keyword suggestions + "≥50% keyword match" results
+  //
+  // PRODUCTS below is a demo catalog standing in for your real product
+  // feed / API. Wire `PRODUCTS` up to your backend (or fetch it) and
+  // everything else — matching, suggestions, results — keeps working.
+  //
+  // Matching rule: the query is split into words; each query word is
+  // scored 0–1 against the product's name/category/tags (1 = exact or
+  // substring match, partial credit for close/typo'd words via a
+  // character-similarity check). A product is a match when its AVERAGE
+  // word score is 50% or higher — i.e. "keyword 50% miley" (matches).
+  // ===================================================================
+  (function(){
+    var PRODUCTS = [
+      { name:'Rider Racing Jacket',        cat:'Outerwear',   price:'৳4,200', tags:'jacket riding biker leather racing armor' },
+      { name:'Adventure Touring Backpack', cat:'Bags',        price:'৳2,850', tags:'backpack travel bag adventure touring rucksack' },
+      { name:'Classic Biker Gloves',       cat:'Accessories', price:'৳1,150', tags:'gloves biker riding leather hand protection' },
+      { name:'Explorer Cargo Pants',       cat:'Bottoms',     price:'৳2,100', tags:'pants cargo travel utility trouser' },
+      { name:'Road Trip Graphic Tee',      cat:'Tops',        price:'৳850',   tags:'tshirt graphic casual shirt tee' },
+      { name:'Highway Denim Jacket',       cat:'Outerwear',   price:'৳3,400', tags:'jacket denim casual outer coat' },
+      { name:'Trailblazer Hiking Boots',   cat:'Footwear',    price:'৳3,900', tags:'boots hiking travel shoes footwear trail' },
+      { name:'Nomad Canvas Duffel Bag',    cat:'Bags',        price:'৳2,300', tags:'bag duffel travel canvas luggage' },
+      { name:'Motorcycle Riding Helmet',   cat:'Accessories', price:'৳5,600', tags:'helmet biker safety riding motorcycle head' },
+      { name:'Wanderer Flannel Shirt',     cat:'Tops',        price:'৳1,650', tags:'shirt flannel casual travel top' },
+      { name:'Cruiser Leather Vest',       cat:'Outerwear',   price:'৳3,750', tags:'vest leather biker sleeveless outer' },
+      { name:'Voyager Travel Wallet',      cat:'Accessories', price:'৳980',   tags:'wallet travel leather card accessory' }
+    ];
+    var POPULAR = ['Jacket', 'Boots', 'Backpack', 'Gloves', 'Helmet'];
+
+    function norm(s){ return (s || '').toLowerCase().trim(); }
+
+    // Character-level similarity (0–1) between two short words, for typo tolerance
+    function wordSimilarity(a, b){
+      if(!a || !b) return 0;
+      if(a === b) return 1;
+      if(b.indexOf(a) !== -1 || a.indexOf(b) !== -1) return 1;
+      var la = a.length, lb = b.length;
+      var dist = new Array(lb + 1);
+      for(var j = 0; j <= lb; j++) dist[j] = j;
+      for(var i = 1; i <= la; i++){
+        var prev = dist[0];
+        dist[0] = i;
+        for(var k = 1; k <= lb; k++){
+          var tmp = dist[k];
+          dist[k] = a[i-1] === b[k-1] ? prev : 1 + Math.min(prev, dist[k], dist[k-1]);
+          prev = tmp;
+        }
+      }
+      return 1 - (dist[lb] / Math.max(la, lb));
+    }
+
+    // Score a product 0–1 against the query (average best-word-match across query terms)
+    function scoreProduct(query, product){
+      var haystack = norm(product.name + ' ' + product.cat + ' ' + product.tags);
+      if(haystack.indexOf(query) !== -1) return 1;
+      var qWords = query.split(/\s+/).filter(Boolean);
+      var pWords = haystack.split(/\s+/).filter(Boolean);
+      if(!qWords.length) return 0;
+      var total = 0;
+      qWords.forEach(function(qw){
+        var best = 0;
+        pWords.forEach(function(pw){
+          var s = wordSimilarity(qw, pw);
+          if(s > best) best = s;
+        });
+        total += best;
+      });
+      return total / qWords.length;
+    }
+
+    function getMatches(query){
+      query = norm(query);
+      if(!query) return [];
+      return PRODUCTS
+        .map(function(p){ return { product:p, score:scoreProduct(query, p) }; })
+        .filter(function(m){ return m.score >= 0.5; })  // ≥50% keyword match
+        .sort(function(a,b){ return b.score - a.score; });
+    }
+
+    function highlight(name, query){
+      var idx = name.toLowerCase().indexOf(query.toLowerCase());
+      if(idx === -1) return name;
+      return name.slice(0, idx) + '<mark>' + name.slice(idx, idx + query.length) + '</mark>' + name.slice(idx + query.length);
+    }
+
+    var toggleBtn = document.getElementById('searchToggleBtn');
+    var panel = document.getElementById('searchPanel');
+    var input = document.getElementById('searchInput');
+    var inputWrap = document.getElementById('searchInputWrap');
+    var clearBtn = document.getElementById('searchClearBtn');
+    var goBtn = document.getElementById('searchGoBtn');
+    var closeBtn = document.getElementById('searchCloseBtn');
+    var popularWrap = document.getElementById('searchPopular');
+    var suggestList = document.getElementById('searchSuggestList');
+    var resultsPage = document.getElementById('searchResultsPage');
+    var srpTitle = document.getElementById('srpTitle');
+    var srpBody = document.getElementById('srpBody');
+    var srpBackBtn = document.getElementById('srpBackBtn');
+
+    POPULAR.forEach(function(term){
+      var chip = document.createElement('button');
+      chip.type = 'button';
+      chip.className = 'search-chip';
+      chip.textContent = term;
+      chip.addEventListener('click', function(){
+        input.value = term;
+        renderSuggestions(term);
+        openResultsPage(term);
+      });
+      popularWrap.appendChild(chip);
+    });
+
+    // A single "product view" row: Thumbnail | Title | View Details button
+    function productViewRow(product, query){
+      var row = document.createElement('div');
+      row.className = 'product-view-item';
+      row.innerHTML =
+        '<span class="product-view-thumb"></span>' +
+        '<span class="product-view-title">' + highlight(product.name, query) + '</span>';
+      var viewBtn = document.createElement('button');
+      viewBtn.type = 'button';
+      viewBtn.className = 'product-view-btn';
+      viewBtn.textContent = 'View Details';
+      viewBtn.addEventListener('click', function(e){
+        e.stopPropagation();
+        // Demo hook: replace with e.g. window.location.href = '/product/' + product.slug
+        openResultsPage(product.name, [{ product: product, score: 1 }], product.name);
+      });
+      row.appendChild(viewBtn);
+      return row;
+    }
+
+    // Live keyword suggestions dropdown (still on the search panel, not the new page)
+    function renderSuggestions(query){
+      query = norm(query);
+      suggestList.innerHTML = '';
+      if(!query) return;
+      var matches = getMatches(query).slice(0, 6);
+      matches.forEach(function(m){
+        suggestList.appendChild(productViewRow(m.product, query));
+      });
+    }
+
+    // Full "product view" results — rendered onto the new page
+    function renderResultsPage(matches, query){
+      srpBody.innerHTML = '';
+      if(!matches.length){
+        srpBody.innerHTML = '<div class="search-empty">No products matched "' + query + '". Try a different keyword.</div>';
+        return;
+      }
+      matches.forEach(function(m){
+        srpBody.appendChild(productViewRow(m.product, query));
+      });
+    }
+
+    // Opens the dedicated full-page "product view" results screen
+    function openResultsPage(query, precomputedMatches, titleOverride){
+      query = norm(query);
+      var matches = precomputedMatches || getMatches(query);
+      srpTitle.textContent = titleOverride ? titleOverride : (matches.length + ' result' + (matches.length === 1 ? '' : 's') + ' for "' + query + '"');
+      renderResultsPage(matches, query);
+      resultsPage.classList.add('open');
+    }
+    function closeResultsPage(){
+      resultsPage.classList.remove('open');
+    }
+
+    function handleInput(){
+      var query = norm(input.value);
+      inputWrap.classList.toggle('has-value', query.length > 0);
+      popularWrap.style.display = query ? 'none' : 'flex';
+      renderSuggestions(query);
+    }
+
+    function openPanel(){
+      window.__headerPanel.open('search');
+      panel.classList.add('open');
+      toggleBtn.setAttribute('aria-expanded', 'true');
+      setTimeout(function(){ input.focus(); }, 150);
+    }
+    function closePanel(){
+      panel.classList.remove('open');
+      toggleBtn.setAttribute('aria-expanded', 'false');
+      window.__headerPanel.closed('search');
+    }
+    window.__headerPanel.register('search', closePanel);
+
+    toggleBtn.addEventListener('click', function(e){
+      e.stopPropagation();
+      var willOpen = !panel.classList.contains('open');
+      willOpen ? openPanel() : closePanel();
+    });
+    closeBtn.addEventListener('click', closePanel);
+
+    clearBtn.addEventListener('click', function(){
+      input.value = '';
+      handleInput();
+      input.focus();
+    });
+
+    // Live keyword suggestions as the user types
+    input.addEventListener('input', handleInput);
+
+    // Search icon (after the search bar) -> opens the full "product view" results page
+    goBtn.addEventListener('click', function(){
+      if(norm(input.value)) openResultsPage(input.value);
+    });
+
+    // Enter does the same as clicking the search icon
+    input.addEventListener('keydown', function(e){
+      if(e.key === 'Enter'){
+        e.preventDefault();
+        if(norm(input.value)) openResultsPage(input.value);
+      }
+    });
+
+    srpBackBtn.addEventListener('click', closeResultsPage);
+
+    document.addEventListener('click', function(e){
+      if(!panel.contains(e.target) && e.target !== toggleBtn && !toggleBtn.contains(e.target)){
+        closePanel();
+      }
+    });
+    document.addEventListener('keydown', function(e){
+      if(e.key === 'Escape'){
+        if(resultsPage.classList.contains('open')) closeResultsPage();
+        else closePanel();
+      }
+    });
+  })();
+</script>
+
+
+<!-- ===== CART DRAWER ===== -->
+<div class="cart-drawer-overlay" id="cartOverlay"></div>
+<div class="cart-drawer" id="cartDrawer" role="dialog" aria-modal="true" aria-label="Cart">
+  <div class="cart-drawer-head">
+    <div class="cart-drawer-title">Cart</div>
+    <div class="cart-drawer-hdr-actions">
+      <button type="button" class="cart-drawer-hdr-btn" id="cdDeleteSelBtn" disabled>Delete Sel.</button>
+      <button type="button" class="cart-drawer-hdr-btn" id="cdDeleteAllBtn">Delete All</button>
+      <button type="button" class="cart-drawer-close" id="cartCloseBtn" aria-label="Close">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+    </div>
+  </div>
+  <div class="cart-drawer-body" id="cdBody"></div>
+</div>
+
+<script>
+/* ===== CART DRAWER LOGIC ===== */
+(function(){
+  var CURRENCY = '৳';
+  var cart = [
+    { id:1, title:'Oversized Cotton Hoodie', styleCode:'HD-1042', sku:'SKU-88213', colorName:'Charcoal Black', colorHex:'#2b2b2e', size:'L',  price:1450, discountRate:0.10, qty:2, selected:true,  psOpen:false },
+    { id:2, title:'Everyday Crewneck Tee',   styleCode:'TS-2207', sku:'SKU-88240', colorName:'Off White',      colorHex:'#e9e6df', size:'M',  price:850,  discountRate:0.05, qty:1, selected:true,  psOpen:false },
+    { id:3, title:'Slim Fit Denim Jacket',   styleCode:'JK-0931', sku:'SKU-88301', colorName:'Indigo Blue',    colorHex:'#3a5aa8', size:'M',  price:2600, discountRate:0.10, qty:1, selected:false, psOpen:false }
+  ];
+
+  var CHECK_SVG   = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>';
+  var THUMB_SVG   = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20.38 3.46 16 2a4 4 0 0 1-8 0L3.62 3.46a2 2 0 0 0-1.34 2.23l.58 3.47a1 1 0 0 0 .99.84H6v10a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V10h2.15a1 1 0 0 0 .99-.84l.58-3.47a2 2 0 0 0-1.34-2.23Z"/></svg>';
+  var TRASH_SVG   = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h18"/><path d="M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/><path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6"/></svg>';
+  var MINUS_SVG   = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M5 12h14"/></svg>';
+  var PLUS_SVG    = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>';
+  var CHEVRON_SVG = '<svg class="cd-ps-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>';
+  var BAG_SVG     = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>';
+  function money(n){ return CURRENCY + Math.round(n).toLocaleString('en-BD'); }
+
+  /* -- keep drawer/overlay top in sync with real header height -- */
+  function syncHeaderHeight(){
+    var h = document.querySelector('header');
+    if(h) document.documentElement.style.setProperty('--header-h', h.getBoundingClientRect().height + 'px');
+  }
+  syncHeaderHeight();
+  window.addEventListener('resize', syncHeaderHeight);
+  window.addEventListener('orientationchange', syncHeaderHeight);
+
+  /* -- open / close -- */
+  function openDrawer(){
+    window.__headerPanel.open('cart');
+    syncHeaderHeight();
+    document.getElementById('cartDrawer').classList.add('open');
+    document.getElementById('cartOverlay').classList.add('open');
+    var b = document.getElementById('cartToggleBtn'); if(b) b.setAttribute('aria-expanded','true');
+    document.body.style.overflow = 'hidden';
+    renderDrawer();
+  }
+  function closeDrawer(){
+    document.getElementById('cartDrawer').classList.remove('open');
+    document.getElementById('cartOverlay').classList.remove('open');
+    var b = document.getElementById('cartToggleBtn'); if(b) b.setAttribute('aria-expanded','false');
+    document.body.style.overflow = '';
+    window.__headerPanel.closed('cart');
+  }
+  window.__headerPanel.register('cart', closeDrawer);
+
+  /* -- exposed globally so onclick attribute works -- */
+  window.__cartToggle = function(e){ e && e.stopPropagation(); var d = document.getElementById('cartDrawer'); d.classList.contains('open') ? closeDrawer() : openDrawer(); };
+
+  document.getElementById('cartOverlay').addEventListener('click', closeDrawer);
+  document.getElementById('cartCloseBtn').addEventListener('click', closeDrawer);
+  document.getElementById('cdDeleteAllBtn').addEventListener('click', function(){ cart=[]; renderDrawer(); });
+  document.getElementById('cdDeleteSelBtn').addEventListener('click', function(){ cart=cart.filter(function(c){return !c.selected;}); renderDrawer(); });
+  document.addEventListener('keydown', function(e){ if(e.key==='Escape' && document.getElementById('cartDrawer').classList.contains('open')) closeDrawer(); });
+
+  /* -- render -- */
+  function renderDrawer(){
+    var body = document.getElementById('cdBody');
+    body.innerHTML = '';
+    body.className = 'cart-drawer-body';
+    var sel = cart.filter(function(it){return it.selected;});
+    document.getElementById('cdDeleteSelBtn').disabled = sel.length===0;
+    document.getElementById('cdDeleteAllBtn').disabled = cart.length===0;
+
+    if(!cart.length){
+      body.innerHTML = '<div class="cd-empty">'+BAG_SVG+'<div class="cd-empty-title">Your cart is empty</div><div class="cd-empty-sub">Items you add will show up here.</div></div>';
+      return;
+    }
+
+    cart.forEach(function(it){
+      var ls=it.price*it.qty, ld=ls*it.discountRate;
+      var card=document.createElement('div');
+      card.className='cd-card'+(it.psOpen?' ps-open':'');
+      card.innerHTML=
+        '<button type="button" class="cd-select-box'+(it.selected?' checked':'')+'">'+CHECK_SVG+'</button>'+
+        '<div class="cd-card-top">'+
+          '<div class="cd-thumb">'+THUMB_SVG+'</div>'+
+          '<div class="cd-detail">'+
+            '<div class="cd-row1"><div class="cd-title">'+it.title+'</div><button type="button" class="cd-remove">'+TRASH_SVG+'</button></div>'+
+            '<div class="cd-row2"><span>Style <b>'+it.styleCode+'</b></span><span class="sep"></span><span>SKU <b>'+it.sku+'</b></span></div>'+
+            '<div class="cd-row3">'+
+              '<span class="cd-chip"><span class="dot" style="background:'+it.colorHex+'"></span>'+it.colorName+'</span>'+
+              '<span class="cd-chip">Size <b>'+it.size+'</b></span>'+
+              '<div class="cd-qty">'+
+                '<button type="button" class="cd-qty-btn cd-minus"'+(it.qty<=1?' disabled':'')+'>'+MINUS_SVG+'</button>'+
+                '<span class="cd-qty-val">'+it.qty+'</span>'+
+                '<button type="button" class="cd-qty-btn cd-plus">'+PLUS_SVG+'</button>'+
+              '</div>'+
+            '</div>'+
+          '</div>'+
+        '</div>'+
+        '<div class="cd-divider"></div>'+
+        '<div class="cd-bottom">'+
+          '<button type="button" class="cd-ps-toggle"><span class="cd-ps-label">Payment Summary</span>'+CHEVRON_SVG+'</button>'+
+          '<button type="button" class="cd-btn-checkout">Checkout</button>'+
+        '</div>'+
+        '<div class="cd-ps-details"'+(it.psOpen?'':' hidden')+'>'+
+          '<div class="cd-ps-row"><span class="psl">Price</span><span class="psv">'+money(ls)+'</span></div>'+
+          '<div class="cd-ps-row discount"><span class="psl">Discount</span><span class="psv">-'+money(ld)+'</span></div>'+
+        '</div>';
+
+      card.querySelector('.cd-select-box').addEventListener('click',function(){it.selected=!it.selected;renderDrawer();});
+      card.querySelector('.cd-remove').addEventListener('click',function(){cart=cart.filter(function(c){return c.id!==it.id;});renderDrawer();});
+      card.querySelector('.cd-minus').addEventListener('click',function(){if(it.qty>1){it.qty--;renderDrawer();}});
+      card.querySelector('.cd-plus').addEventListener('click',function(){it.qty++;renderDrawer();});
+      card.querySelector('.cd-ps-toggle').addEventListener('click',function(){it.psOpen=!it.psOpen;renderDrawer();});
+      body.appendChild(card);
+    });
+
+    if(sel.length){
+      body.className='cart-drawer-body has-bar';
+      var bar=document.createElement('div');
+      bar.className='cd-bulk-bar';
+      bar.innerHTML='<div class="cd-bulk-inner"><button type="button" class="cd-cancel-sel">Cancel</button><button type="button" class="cd-checkout-sel">Checkout</button></div>';
+      bar.querySelector('.cd-cancel-sel').addEventListener('click',function(){cart.forEach(function(it){it.selected=false;});renderDrawer();});
+      body.appendChild(bar);
+    }
+  }
+})();
+</script>
+
+</body>
+</html>
